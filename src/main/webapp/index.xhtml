@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-
-    <title>Projeto Web</title>
+	<title>Projeto Web</title>
 </h:head>
 <h:body>
-    <h1>JAVA WEB</h1>
-     <p:panel header="Cadastro de Usuário">
-            <h:outputText value="Tela carregada com sucesso!" />
-        </p:panel>
-    <h:form>
-        <p:panel header="Cadastro de Usuário">
-            <h:outputText value="Tela carregada com sucesso!" />
-        </p:panel>
-    </h:form>
+	<h1>JAVA WEB</h1>
+	<div class="card">
+		<h:form>
+			<h:panelGrid id="grid" cellpadding="7" columns="2" styleClass="mb-3">
+				<p:outputLabel for="firstname" value="Firstname:" />
+				<p:inputText id="firstname" value="#{processView.firstname}" />
+
+				<p:outputLabel for="middle" value="Middle:" />
+				<p:inputText id="middle" value="#{processView.middlename}" />
+
+				<p:outputLabel for="surname" value="Surname:" />
+				<p:inputText id="surname" value="#{processView.lastname}"
+					required="true" requiredMessage="Surname is required" />
+			</h:panelGrid>
+
+			<p:commandButton value="All" id="btnAll" process="@all"
+				update="grid msgs" styleClass="mr-2" />
+			<p:commandButton value="Form" id="btnForm" process="@form"
+				update="grid msgs"styleClass="mr-2" />
+			<p:commandButton value="This" id="btnThis" process="@this"
+				update="grid msgs" styleClass="mr-2"
+				resetValues="true" />
+			<p:commandButton value="None" id="btnNone" process="@none"
+				update="grid msgs" styleClass="mr-2"
+				resetValues="true" />
+			<p:commandButton value="Parent" id="btnParent" process="@parent"
+				update="grid msgs" styleClass="mr-2" />
+			<p:commandButton value="This Surname" id="btnSurname" />
+
+			<p:messages id="msgs" />
+		</h:form>
+	</div>
 </h:body>
 </html>
